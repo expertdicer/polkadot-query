@@ -75,9 +75,28 @@ async function main() {
   });
   // Example usage
 
-  const addr = "5Gb6Zfe8K8NSKrkFLCgqs8LUdk7wKweXM5pN296jVqDpdziR";
-  const { free: balance } = await api.query.system.account(addr);
-  console.log("free:", balance)
+    // Example usage
+    listAssets = await api.rpc.assets.listAssets();
+    let decoder = new TextDecoder('utf-8');
+    ids = []
+    for (let i = 0 ; i < 25; i ++) {
+      console.log("name", i, ":", decoder.decode(listAssets[i].name))
+      console.log("id", i, ":", listAssets[i].id)
+      ids.push(listAssets[i].id.toString())
+    }
+    console.log("ids:", listAssets[1].id)
+    const addr = "5Gb6Zfe8K8NSKrkFLCgqs8LUdk7wKweXM5pN296jVqDpdziR";
+    const xpica = await api.rpc.ibc.queryBalanceWithAddress(addr, 1001);
+    console.log("xpica", xpica)
+    console.log("type", typeof ids[0])
+    for (let i = 0; i < 25; i++) {
+      const balance = await api.rpc.ibc.queryBalanceWithAddress(addr, Number(ids[i]));
+      if (balance.denom != "") {
+        console.log(`Asset balance of ${balance}: ${balance.amount}`);
+      } else {
+        continue;
+      }
+    }
 
   
 }
