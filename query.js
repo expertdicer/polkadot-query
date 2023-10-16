@@ -74,7 +74,6 @@ async function main() {
     },
   });
   // Example usage
-  console.log("type", typeof ids[0])
   for (let i = 0; i < 25; i++) {
     const balance = await api.rpc.ibc.queryBalanceWithAddress(addr, Number(ids[i]));
     if (balance.denom != "") {
