@@ -77,6 +77,7 @@ async function main() {
 
   const addr = "5Gb6Zfe8K8NSKrkFLCgqs8LUdk7wKweXM5pN296jVqDpdziR";
   const { free: balance } = await api.query.system.account(addr);
+  print("free:", balance)
 
   
 }
