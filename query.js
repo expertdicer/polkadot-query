@@ -8,7 +8,7 @@ const { encodeAddress } = require("@polkadot/util-crypto");
 
 async function main() {
   const provider = new WsProvider(
-    "ws://127.0.0.1:9188"
+    "wss://picasso-rococo-unrpc-lb.composablenodes.tech/"
   );
   const api = await ApiPromise.create({
     provider,
@@ -74,6 +74,7 @@ async function main() {
     },
   });
   // Example usage
+  const addr = "5Gb6Zfe8K8NSKrkFLCgqs8LUdk7wKweXM5pN296jVqDpdziR";
   for (let i = 0; i < 25; i++) {
     const balance = await api.rpc.ibc.queryBalanceWithAddress(addr, Number(ids[i]));
     if (balance.denom != "") {
