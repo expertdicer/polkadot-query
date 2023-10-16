@@ -8,7 +8,7 @@ const { encodeAddress } = require("@polkadot/util-crypto");
 
 async function main() {
   const provider = new WsProvider(
-    "wss://picasso-rococo-unrpc-lb.composablenodes.tech/"
+    "ws://127.0.0.1:9188"
   );
   const api = await ApiPromise.create({
     provider,
