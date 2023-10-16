@@ -76,7 +76,7 @@ async function main() {
   // Example usage
 
   const addr = "5Gb6Zfe8K8NSKrkFLCgqs8LUdk7wKweXM5pN296jVqDpdziR";
-  const { free: balance } = await api.query.system.account(address);
+  const { free: balance } = await api.query.system.account(addr);
 
   
 }
