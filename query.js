@@ -76,7 +76,7 @@ async function main() {
   // Example usage
   const addr = "5Gb6Zfe8K8NSKrkFLCgqs8LUdk7wKweXM5pN296jVqDpdziR";
   for (let i = 0; i < 25; i++) {
-    const balance = await api.rpc.ibc.queryBalanceWithAddress(addr, Number(ids[i]));
+    const balance = await api.rpc.ibc.queryBalanceWithAddress(addr, i);
     if (balance.denom != "") {
       console.log(`Asset balance of ${balance}: ${balance.amount}`);
     } else {
